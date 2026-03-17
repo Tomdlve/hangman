@@ -1,9 +1,7 @@
-// Main game component with game logic and API calls
-
 import { useState, useEffect } from 'react';
-import { HangmanDisplay } from './hangman-display.jsx';
-import { WordDisplay } from './word-display.jsx';
-import { Keyboard } from './keyboard.jsx';
+import { HangmanDisplay } from './HangmanDisplay.jsx';
+import { WordDisplay } from './WordDisplay.jsx';
+import { Keyboard } from './Keyboard.jsx';
 import Confetti from 'react-confetti-boom';
 export const Game = ({ selectedLocale }) => {
   // États du jeu
@@ -83,8 +81,6 @@ export const Game = ({ selectedLocale }) => {
   };
 
   return (
-
-
 
 
     <div className="game">

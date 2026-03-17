@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Header } from './components/header.jsx';
-import { LanguageSelector } from './components/language-selector.jsx';
-import { Game } from './components/game.jsx';
+import { Header } from './components/Header.jsx';
+import { LanguageSelector } from './components/LanguageSelector.jsx';
+import { Game } from './components/Game.jsx';
 import './styles/styles.css'; 
 
 const App = () => {
