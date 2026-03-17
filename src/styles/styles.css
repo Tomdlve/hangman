@@ -1,0 +1,230 @@
+:root {
+  --color-bg:          #f5f5f5;
+  --color-surface:     #ffffff;
+  --color-border:      #333333;
+  --color-text:        #333333;
+  --color-text-muted:  #666666;
+  --color-accent:      #e74c3c;
+  --color-success:     #27ae60;
+  --color-key-used-bg: #dddddd;
+  --color-key-used-fg: #999999;
+
+  --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-mono: 'Courier New', monospace;
+
+  --radius:     4px;
+  --max-width:  800px;
+  --shadow-key: 3px 3px 0 var(--color-border);
+  --transition: 150ms ease;
+}
+
+/* Base */
+body {
+  font-family: var(--font-base);
+  background: var(--color-bg);
+  min-height: 100vh;
+  color: var(--color-text);
+  padding: 20px;
+}
+
+section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Header  */
+.main-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.main-title h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.main-title p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+/* Language Selector  */
+.language-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.language-selector label {
+  font-weight: 600;
+}
+
+.language-selector select {
+  padding: 8px 16px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.language-selector select:focus {
+  outline: none;
+  border-color: #000;
+}
+
+/* Game Container */
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Hangman Display */
+.hangman-display {
+  text-align: center;
+}
+
+.guesses-counter {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+/* Word Display  */
+.word-display {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.word {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 16px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Keyboard  */
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  gap: 8px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.keyboard__button {
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius);
+  cursor: pointer;
+  min-width: 45px;
+  min-height: 45px;
+  box-shadow: var(--shadow-key);
+  transition: background var(--transition), color var(--transition),
+              box-shadow var(--transition), transform var(--transition);
+}
+
+.keyboard__button:hover:not(:disabled) {
+  background: var(--color-border);
+  color: var(--color-surface);
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+.keyboard__button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.keyboard__button--guessed {
+  background: var(--color-key-used-bg);
+  border-color: var(--color-key-used-fg);
+  color: var(--color-key-used-fg);
+  box-shadow: none;
+}
+
+/*  Game Messages */
+.game-message {
+  text-align: center;
+  padding: 20px;
+  border-radius: var(--radius);
+  margin: 20px 0;
+}
+
+.game-message h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.game-message p {
+  font-size: 1.2rem;
+}
+
+.game-message strong {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.game-message--won {
+  background: var(--color-success);
+  color: white;
+}
+
+.game-message--lost {
+  background: var(--color-accent);
+  color: white;
+}
+
+/*  Restart Button */
+.restart-button {
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: var(--color-border);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background var(--transition);
+}
+
+.restart-button:hover {
+  background: #000;
+}
+
+/*  Responsive  */
+@media (max-width: 768px) {
+  .keyboard {
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 6px;
+  }
+
+  .keyboard__button {
+    padding: 10px;
+    font-size: 1rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .keyboard {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
